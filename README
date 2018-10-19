@@ -1,1 +1,15 @@
 Realtime Unbounce with API Metrics
+
+Have you ever wanted a realtime review of your unbounce performance? I did. We run a ton of unbounce pages, even using the dynamic features, and I also spend a ton with Google and other ad providers. Over time, my team has built a lead generating machine, and I'd like to know when its misbehaving.
+
+As it turns out, I also work for a realtime analytics product group at VMware, called Wavefront. Since I can code, and since Unbounce's reporting is pretty weak (Sorry folks), I wanted to be able to grab the data so I can do analytics on it, and well as see if I have any outages.
+
+Now, I'm a scripter at heart. Its just easier. so I was able to pull data from Unbounce with 4 lines of BASH code, and another 4 lines of AWK code, on Ubuntu. I'll walk you through it.
+
+unbouce-data.sh
+
+I use curl to get the data from Unbounce. You'll need to get an API key. You also need to include the ":" after the password, since Unbounce expects a null password. I then use JQ to format the result and pull out the stats I want. In this case its visits, vistors clicks conversions and its publish state.
+
+I then filter the data slightly with SED, since the Wavefront data format does not like "https:" at at the front of the url. Finally, I print out the data in Wavefront format using AWK, and then pipe it to nc to send to the Wavefront proxy.
+
+If you'd like to try this out, sign up for a free trial, or reach out to me on our Public Slack.
