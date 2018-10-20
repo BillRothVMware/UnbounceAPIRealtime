@@ -1,4 +1,4 @@
-Realtime Unbounce with API Metrics
+# Realtime Unbounce with API Metrics
 
 Have you ever wanted a realtime review of your unbounce performance? I did. We run a ton of unbounce pages, even using the dynamic features, and I also spend a ton with Google and other ad providers. Over time, my team has built a lead generating machine, and I'd like to know when its misbehaving.
 
@@ -13,3 +13,5 @@ I use curl to get the data from Unbounce. You'll need to get an API key. You als
 I then filter the data slightly with SED, since the Wavefront data format does not like "https:" at at the front of the url. Finally, I print out the data in Wavefront format using AWK, and then pipe it to nc to send to the Wavefront proxy.
 
 If you'd like to try this out, sign up for a free trial, or reach out to me on our Public Slack.
+
+Also posted here: https://community.unbounce.com/t/realtime-unbounce-with-api-metrics-and-wavefront/17489?u=billrothvmware
